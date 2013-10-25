@@ -1,6 +1,10 @@
 ServerTest::Application.routes.draw do
   
-  devise_for :users
+  get '/users' => 'devise/registrations#create'
+
+  devise_for :users, :controllers => {
+    :registrations => "devise/user_registrations"
+  }
 
   resources :workers
 
