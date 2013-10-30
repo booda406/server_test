@@ -1,6 +1,6 @@
 ServerTest::Application.routes.draw do
   
-  get '/users' => 'devise/registrations#create'
+  # get '/users' => 'devise/registrations#create'
 
   devise_for :users, :controllers => {
     :registrations => "devise/user_registrations"
