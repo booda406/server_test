@@ -1,5 +1,7 @@
 ServerTest::Application.routes.draw do
   
+  resources :products
+
   # get '/users' => 'devise/registrations#create'
 
   devise_for :users, :controllers => {
