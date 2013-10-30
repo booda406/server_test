@@ -1,4 +1,4 @@
-class SessionsController < Devise::SessionsController
+class Devise::SessionsController < Devise::SessionsController
   before_filter :authenticate_user!, :except => [:create, :destroy]
   respond_to :json
 
