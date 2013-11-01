@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource)
       if resource.kind_of? User
         root_path
-      else resource.kind_of? Admin
-        check_path
       end     
 	end
 

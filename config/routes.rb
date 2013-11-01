@@ -2,16 +2,19 @@ ServerTest::Application.routes.draw do
   
   resources :products
 
+  resources :posts
+
+
   # get '/users' => 'devise/registrations#create'
+  resources :tokens,:only => [:create, :destroy]
 
   devise_for :users, :controllers => {
-    :registrations => "devise/user_registrations",
-    :sessions => "devise/my_sessions" 
+    # :registrations => "devise/user_registrations",
+     :sessions => "devise/my_sessions" 
   }
 
-  resources :workers
 
-  resources :posts
+  resources :workers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

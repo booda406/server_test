@@ -1,6 +1,6 @@
 class Devise::MySessionsController < Devise::SessionsController
-  skip_before_filter :verify_authenticity_token, :only => [:create, :destroy]
-  respond_to :json, :html
+  skip_before_action :verify_authenticity_token, :only => [:create, :destroy]
+  respond_to :json
 
   def create
     resource = User.find_for_database_authentication(:email => params[:email])

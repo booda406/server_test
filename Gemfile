@@ -24,6 +24,8 @@ gem 'devise'
 #image upload
 gem 'carrierwave'
 
+gem 'simple_form'
+
 #json server
 gem 'rabl'
 
