@@ -10,7 +10,7 @@ ServerTest::Application.routes.draw do
 
   devise_for :users, :controllers => {
     # :registrations => "devise/user_registrations",
-     :sessions => "devise/my_sessions" 
+     #:sessions => "devise/my_sessions" 
   }
 
 

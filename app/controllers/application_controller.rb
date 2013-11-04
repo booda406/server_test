@@ -13,4 +13,5 @@ class ApplicationController < ActionController::Base
     new_seller_session_path
   end
 
+
 end

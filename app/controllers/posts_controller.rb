@@ -4,7 +4,8 @@ class PostsController < ApplicationController
 	respond_to :html, :json, :xml
 
   	def index
-  		@posts = Post.find(:all, :conditions => {:user_id => current_user.id})
+  		@posts = Post.all
+      #@posts = Post.find(:all, :conditions => {:user_id => current_user.id})
   	end
 
   	def show
