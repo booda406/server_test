@@ -12,13 +12,5 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     new_seller_session_path
   end
-  
-  def verified_request?
-    if request.content_type == "application/json"
-      true
-    else
-      super()
-    end
- end
 
 end
