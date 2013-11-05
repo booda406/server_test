@@ -21,9 +21,9 @@ module ServerTest
     # config.i18n.default_locale = :de
     def verified_request?
        if request.content_type == "application/json"
-          true
+          super()
         else
-            super()
+            true
         end
     end
 
