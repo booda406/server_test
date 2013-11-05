@@ -2,8 +2,7 @@ ServerTest::Application.routes.draw do
   
   resources :products
 
-  #resources :posts
-get 'posts' => 'posts#create'
+  resources :posts
 
   # get '/users' => 'devise/registrations#create'
   resources :tokens,:only => [:create, :destroy]
