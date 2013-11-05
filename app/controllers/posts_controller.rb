@@ -4,9 +4,13 @@ class PostsController < ApplicationController
 	respond_to :html, :json, :xml
 
   	def index
-  		@posts = Post.all
-      #@posts = Post.find(:all, :conditions => {:user_id => current_user.id})
+  		#@posts = Post.all
+      @posts = Post.find(:all, :conditions => {:user_id => current_user.id})
   	end
+
+    def new
+      @post = Post.new
+    end
 
   	def show
   		@post = Post.find(params[:id])
@@ -14,6 +18,7 @@ class PostsController < ApplicationController
 
   	def create
    	 @post = Post.new(post_create_params)
+     @post.user = current_user
   
    		   	if @post.save
       			render json: @post, status: :ok
@@ -41,7 +46,7 @@ class PostsController < ApplicationController
   private
 
   def post_create_params
-      params.require(:post).permit(:title, :body, :user_id)
+      params.require(:post).permit(:title, :body)
   end
 
 end
