@@ -27,6 +27,31 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
+  respond_to do |format|
+      format.json {
+ #create a new image so that you can call it's class method (a bit hacky, i know)
+        @image = Image.new
+#get the json image data
+        pixels = params[:image]
+#convert it from hex to binary
+      pixels = @image.hex_to_string(pixels)
+#create it as a file
+        data = StringIO.new(pixels)
+#set file types
+        data.class.class_eval { attr_accessor :original_filename, :content_type }
+        data.original_filename = "test1.jpeg"
+        data.content_type = "image/jpeg"
+#set the image id, had some weird behavior when i didn't
+        @image.id = Image.count + 1
+#upload the data to Amazon S3
+       # @image.upload(data)
+#save the image
+        if @image.save!
+          render :nothing => true
+        end
+      }
+    end
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
