@@ -23,11 +23,17 @@ gem 'devise'
 
 #image upload
 gem 'carrierwave'
+gem "mini_magick"
+
 
 gem 'simple_form'
 
 #json server
 gem 'rabl'
+
+#nested forms
+gem "cocoon"
+gem "nested_form"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

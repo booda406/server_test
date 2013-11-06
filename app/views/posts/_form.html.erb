@@ -1,4 +1,4 @@
-<%= simple_form_for(@post) do |f| %>
+<%= simple_nested_form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -14,6 +14,14 @@
 
     <%= f.input :title %>
     <%= f.input :body %>
+
+<div id="images">Images
+<%= f.simple_fields_for :images do |image| %><br>
+    <%= image.input :image %>
+  <% end %>
+</div>
+<%= f.link_to_add '新增圖片', :images %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

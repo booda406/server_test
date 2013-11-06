@@ -1,0 +1,15 @@
+
+<div class="field">
+  <%= @post.title %>
+</div>
+
+<div class="field">
+  <%= @post.body %>
+</div>
+
+<p>
+  <strong>Picture:</strong>
+  <% @post.images.each do |f| %>
+  <%= image_tag f.image %>
+  <% end %>
+</p>

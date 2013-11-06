@@ -1,5 +1,7 @@
 ServerTest::Application.routes.draw do
   
+  resources :projects
+
   resources :products
 
   resources :posts

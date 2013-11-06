@@ -1,0 +1,32 @@
+<%= simple_nested_form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div id="tasks">
+<%= f.simple_fields_for :tasks do |task| %><br>
+  <%= task.input :description %>
+  <%= task.link_to_remove "Remove Task" %>
+  <% end %>
+</div>
+<%= f.link_to_add '新增Task', :tasks %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
