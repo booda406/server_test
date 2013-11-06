@@ -35,6 +35,9 @@ gem 'rabl'
 gem "cocoon"
 gem "nested_form"
 
+#handle image upload
+gem 'paperclip', '~>3.0'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
