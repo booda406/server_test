@@ -6,7 +6,7 @@ class Test < ActiveRecord::Base
 	before_save :decode_avatar_data
 
 	def decode_avatar_data
-    # If image_data is present, it means that we were sent an image over
+    # If avatar_data is present, it means that we were sent an image over
     # JSON and it needs to be decoded.  After decoding, the image is processed
     # normally via Paperclip.
      if self.avatar_data.present?
@@ -15,7 +15,7 @@ class Test < ActiveRecord::Base
         data.original_filename = self.id.to_s + ".png"
         data.content_type = "image/png"
 
-        self.image = data
+        self.avatar = data
      end
   	end
 
