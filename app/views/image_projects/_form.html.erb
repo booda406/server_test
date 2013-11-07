@@ -1,0 +1,31 @@
+<%= simple_form_for @image_project, :html => {multipart: true} do |f| %>
+  <% if @image_project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@image_project.errors.count, "error") %> prohibited this image_project from being saved:</h2>
+
+      <ul>
+      <% @image_project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :framework %><br>
+    <%= f.text_field :framework %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.fields_for :images do |f_images| %>
+    <%= f_images.file_field :image %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

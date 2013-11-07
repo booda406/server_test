@@ -1,8 +1,9 @@
 <h1>Posts#index</h1>
 <% @posts.each do |post| %>
 <%= post.title %><br>
-<%= post.body %><br>
+<%= link_to 'show', post_path(post) %>
 <% end %>
+<br>
 <%= link_to 'New Post', new_post_path %>
 
 <%= link_to "登出", destroy_user_session_path %>

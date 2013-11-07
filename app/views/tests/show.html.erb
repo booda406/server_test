@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @test.avatar.url %>
+<%= image_tag @test.avatar.url(:medium) %>
+<%= image_tag @test.avatar.url(:thumb) %>
+
+<%= link_to 'Edit', edit_test_path(@test) %> |
+<%= link_to 'Back', tests_path %>

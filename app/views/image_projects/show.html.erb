@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @image_project.name %>
+</p>
+
+<p>
+  <strong>Framework:</strong>
+  <%= @image_project.framework %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @image_project.image_url %>
+</p>
+
+<% @image_project.images.each do |project_image| %>
+<%= image_tag project_image.image %>
+<% end %> 
+
+<%= link_to 'Edit', edit_image_project_path(@image_project) %> |
+<%= link_to 'Back', image_projects_path %>

@@ -1,5 +1,9 @@
 ServerTest::Application.routes.draw do
   
+  resources :tests
+
+  resources :image_projects
+
   resources :projects
 
   resources :products
