@@ -15,6 +15,9 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+                3.times do
+                        @project.avatars.build
+                end
   end
 
   # GET /projects/1/edit
@@ -69,7 +72,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :description, :avatars_attributes)
+      params.require(:project).permit(:name, :description, avatars_attributes: [:id, :avatar])
       #tasks_attributes: [:id, :description, :done, :_destroy]
     end
 end

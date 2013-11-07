@@ -1,4 +1,4 @@
-<%= simple_nested_form_for(@project) do |f| %>
+<%= form_for @project, html: {multipart: true} do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -19,13 +19,13 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-  <div id="tasks">
-<%= f.simple_fields_for :tasks do |task| %><br>
-  <%= task.input :description %>
-  <%= task.link_to_remove "Remove Task" %>
+
+<div class="field">
+  <%= f.fields_for :avatars do |f_avatar| %>
+    <%= f_avatar.file_field :avatar %>
   <% end %>
-</div>
-<%= f.link_to_add '新增Task', :tasks %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

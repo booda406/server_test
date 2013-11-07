@@ -10,5 +10,9 @@
   <%= @project.description %>
 </p>
 
+<% @project.avatars.each do |project_avatar| %>
+ <%= image_tag project_avatar.avatar.url(:medium) %>
+<% end %>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
