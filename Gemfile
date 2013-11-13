@@ -25,7 +25,10 @@ gem 'devise'
 gem 'carrierwave'
 gem "mini_magick"
 
+#debug
+gem 'pry-byebug'
 
+#easy form
 gem 'simple_form'
 
 #json server

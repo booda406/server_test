@@ -15,9 +15,9 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-                3.times do
-                        @project.avatars.build
-                end
+    3.times do
+      @project.avatars.build
+    end
   end
 
   # GET /projects/1/edit
@@ -74,5 +74,6 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:name, :description, avatars_attributes: [:avatar])
       #tasks_attributes: [:id, :description, :done, :_destroy]
+       #check here 
     end
 end
