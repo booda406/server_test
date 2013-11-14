@@ -27,6 +27,24 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
+
+          #check if file is within picture_path
+      if params[:project][:avatar]["file"]
+           picture_path_params = params[:project][:avatar]
+           #create a new tempfile named fileupload
+           tempfile = Tempfile.new("fileupload")
+           tempfile.binmode
+           #get the file and decode it with base64 then write it to the tempfile
+           tempfile.write(Base64.decode64(picture_path_params["file"]))
+     
+           #create a new uploaded file
+           uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => picture_path_params["filename"], :original_filename => picture_path_params["original_filename"]) 
+     
+           #replace picture_path with the new uploaded file
+           params[:project][:avatar] =  uploaded_file
+     
+      end
+
     @project = Project.new(project_params)
 
     respond_to do |format|
