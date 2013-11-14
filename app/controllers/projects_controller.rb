@@ -29,8 +29,8 @@ class ProjectsController < ApplicationController
   def create
 
           #check if file is within picture_path
-      if params[:project][:avatar]["file"]
-           picture_path_params = params[:project][:avatar]
+      if params[:project][:avatars_attributes]["file"]
+           picture_path_params = params[:project][:avatars_attributes]
            #create a new tempfile named fileupload
            tempfile = Tempfile.new("fileupload")
            tempfile.binmode
@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
            uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => picture_path_params["filename"], :original_filename => picture_path_params["original_filename"]) 
      
            #replace picture_path with the new uploaded file
-           params[:project][:avatar] =  uploaded_file
+           params[:project][:avatars_attributes] =  uploaded_file
      
       end
 
