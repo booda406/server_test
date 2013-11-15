@@ -29,8 +29,8 @@ class ProjectsController < ApplicationController
   def create
     if request.format.json?
           #check if file is within picture_path
-      if params[:avatars_attributes][:avatar]["file"]
-           picture_path_params = params[:avatars_attributes][:avatar]
+      if params[:avatars_attributes][:avatar_data]["file"]
+           picture_path_params = params[:avatars_attributes][:avatar_data]
            #create a new tempfile named fileupload
            tempfile = Tempfile.new("fileupload")
            tempfile.binmode
