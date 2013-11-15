@@ -27,10 +27,10 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-
+    if request.format.json?
           #check if file is within picture_path
-      if params[:project][:avatars_attributes]["file"]
-           picture_path_params = params[:project][:avatars_attributes]
+      if params[:avatars_attributes]["file"]
+           picture_path_params = params[:avatars_attributes]
            #create a new tempfile named fileupload
            tempfile = Tempfile.new("fileupload")
            tempfile.binmode
@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
            params[:project][:avatars_attributes] =  uploaded_file
      
       end
-
+    end
     @project = Project.new(project_params)
 
     respond_to do |format|
