@@ -25,24 +25,25 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    if request.format.json?
-          #check if file is within picture_path
-      if params[:product][:image]["file"]
-           picture_path_params = params[:product][:image]
-           #create a new tempfile named fileupload
-           tempfile = Tempfile.new("fileupload")
-           tempfile.binmode
-           #get the file and decode it with base64 then write it to the tempfile
-           tempfile.write(Base64.decode64(picture_path_params["file"]))
+    # if request.format.json?
+    #       #check if file is within picture_path
+    #   if params[:product][:image]["file"]
+    #        picture_path_params = params[:product][:image]
+    #        #create a new tempfile named fileupload
+    #        tempfile = Tempfile.new("fileupload")
+    #        tempfile.binmode
+    #        #get the file and decode it with base64 then write it to the tempfile
+    #        tempfile.write(Base64.decode64(picture_path_params["file"]))
      
-           #create a new uploaded file
-           uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => picture_path_params["filename"], :original_filename => picture_path_params["original_filename"]) 
+    #        #create a new uploaded file
+    #        uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => picture_path_params["filename"], :original_filename => picture_path_params["original_filename"]) 
      
-           #replace picture_path with the new uploaded file
-           params[:product][:image] =  uploaded_file
+    #        #replace picture_path with the new uploaded file
+    #        params[:product][:image] =  uploaded_file
      
-      end
-    end
+    #   end
+    #   @product = Product.new.permit!
+    # end
     @product = Product.new(product_params)
 
     respond_to do |format|
