@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
       @product = Product.new.permit!
     end
     
-    @product = Product.new
+    @product = Product.new(product_params)
     
     @image = params[:image_field]
     @product.name = params[:name]
