@@ -50,9 +50,11 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     
     @image = params[:image_field]
+    @product.name = params[:name]
+    @product.description = params[:description]
 
     @product.image = @image
-    
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
