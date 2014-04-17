@@ -44,8 +44,11 @@ class ProductsController < ApplicationController
     #   end
     #   @product = Product.new.permit!
     # end
-    @product = Product.new(product_params)
+    @image = params[:image_field]
 
+    @product = Product.new(product_params)
+    @product.image = @image
+    
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
