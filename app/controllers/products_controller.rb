@@ -47,13 +47,16 @@ class ProductsController < ApplicationController
       @product = Product.new.permit!
     end
     
-    @product = Product.new(product_params)
+    if params[:image_field].nil?
+      @product = Product.new(product_params)
+    else
+      @product = Product.new
+      @image = params[:image_field]
+      @product.name = params[:name]
+      @product.description = params[:description]
+      @product.image = @image
+    end
     
-    @image = params[:image_field]
-    @product.name = params[:name]
-    @product.description = params[:description]
-
-    @product.image = @image
 
     respond_to do |format|
       if @product.save
